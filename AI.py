@@ -34,7 +34,7 @@ class AI:
 
         if copy.is_king_in_check(ai_color):
             invalid_moves.append(best_move)
-            return AI.get_ai_move(chessboard, invalid_moves, ai_color)
+            return AI.get_ai_move(copy, invalid_moves, ai_color)
 
         return best_move
 
@@ -52,17 +52,17 @@ class AI:
 
     @staticmethod
     def get_piece_value(piece):
-        if piece.piece_type == Pawn.get_piece_type():
+        if piece.get_piece_type() == Pawn.get_piece_type():
             return 1
-        elif piece.piece_type == Knight.get_piece_type():
+        elif piece.get_piece_type() == Knight.get_piece_type():
             return 3
-        elif piece.piece_type == Bishop.get_piece_type():
+        elif piece.get_piece_type() == Bishop.get_piece_type():
             return 3
-        elif piece.piece_type == Rook.get_piece_type():
+        elif piece.get_piece_type() == Rook.get_piece_type():
             return 5
-        elif piece.piece_type == Queen.get_piece_type():
+        elif piece.get_piece_type() == Queen.get_piece_type():
             return 9
-        elif piece.piece_type == King.get_piece_type():
+        elif piece.get_piece_type() == King.get_piece_type():
             return 100
 
         return 0
