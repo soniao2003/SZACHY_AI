@@ -47,13 +47,14 @@ class Queen(Piece):
             while True:
                 x += dx
                 y += dy
+
+                if not board.on_board(x, y):
+                    break
+
                 piece = board.get_piece(x, y)
                 moves.append(self.get_move(board, x, y))
 
                 if piece != 0:
-                    break
-
-                if x <= 0 or x >= 8 or y <= 0 or y >= 8:
                     break
 
         return self.remove_0_from_list(moves)
