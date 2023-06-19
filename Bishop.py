@@ -27,8 +27,8 @@ class Bishop(Piece):
                 if not board.on_board(x, y):
                     break
 
-                piece = board.get_piece(x, y)
                 moves.append(self.get_move(board, x, y))
+                piece = board.get_piece(x, y)
 
                 if piece != 0:
                     break
