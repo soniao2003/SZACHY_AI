@@ -5,11 +5,12 @@ from Queen import Queen
 from Bishop import Bishop
 from Rook import Rook
 from Knight import Knight
+import random
 
 class AI:
     @staticmethod
     def get_ai_move(chessboard, invalid_moves, ai_color):
-        best_move = None
+        best_moves = []
         best_score = float('inf')
 
         for move in chessboard.get_possible_moves(ai_color):
@@ -23,11 +24,15 @@ class AI:
 
             if score < best_score:
                 best_score = score
-                best_move = move
+                best_moves = [move]
+            elif score == best_score:
+                best_moves.append(move)
 
         # szachmat
-        if best_move is None:
+        if not best_moves:
             return None
+
+        best_move = random.choice(best_moves)
 
         copy = Logic.clone(chessboard)
         copy.move_check_rules(best_move)
